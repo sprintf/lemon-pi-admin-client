@@ -20,12 +20,17 @@ class _TrackScreenState extends State<TrackScreen> {
 
   final raceIdController = TextEditingController();
   final protoClient = ProtoClient.getInstance();
+  final liveRaces = ProtoClient.getInstance().getLiveRaces();
 
   final ButtonStyle style = ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
-  void _handleRaceId() {
+  void _handleEnteredRaceId() {
+    _handleRaceId(raceIdController.text);
+  }
+
+  void _handleRaceId(String raceId) {
     print("calling proto");
-    protoClient.connect(widget.track.trackCode, raceIdController.text)
+    protoClient.connect(widget.track.trackCode, raceId)
         .then((value) {
           setState(() {
             widget.track.running = value.running;
@@ -93,12 +98,37 @@ class _TrackScreenState extends State<TrackScreen> {
                     labelText: 'RaceId',
                   ),
                 ),
-                buildButton()
+                buildButton(),
+                Expanded(
+                  child: FutureBuilder<LiveRaceListResponse?>(
+                    future: liveRaces, builder: buildRaceList,
+                  ),
+                ),
               ]
           ),
         ),
       );
     }
+  }
+
+  Widget buildRaceList(
+      BuildContext context, AsyncSnapshot<LiveRaceListResponse?> races) {
+    if (races != null && races.hasData) {
+      return ListView.builder(
+          shrinkWrap: true,
+          itemCount: races.data?.races.length,
+          itemBuilder: (BuildContext ctx, int index) {
+            var race = races.data?.races.elementAt(index);
+            return ListTile(
+                title: Text("${race?.eventName} @ ${race?.trackName}"),
+                onTap: () {
+                  if (race?.raceId != null) {
+                    _handleRaceId(race!.raceId);
+                  }
+                });
+          });
+    }
+    return const TextField();
   }
 
   ElevatedButton buildButton() {
@@ -112,7 +142,7 @@ class _TrackScreenState extends State<TrackScreen> {
       return ElevatedButton(
         style: style,
         child:const Text('Connect to Race Data Stream'),
-        onPressed: () {_handleRaceId();},
+        onPressed: () {_handleEnteredRaceId();},
       );
     }
   }

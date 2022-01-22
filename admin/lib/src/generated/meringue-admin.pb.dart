@@ -503,3 +503,119 @@ class RaceDataConnectionRequest extends $pb.GeneratedMessage {
   void clearHandle() => clearField(1);
 }
 
+class LiveRace extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LiveRace', createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'raceId', protoName: 'raceId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'trackName', protoName: 'trackName')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'eventName', protoName: 'eventName')
+    ..hasRequiredFields = false
+  ;
+
+  LiveRace._() : super();
+  factory LiveRace({
+    $core.String? raceId,
+    $core.String? trackName,
+    $core.String? eventName,
+  }) {
+    final _result = create();
+    if (raceId != null) {
+      _result.raceId = raceId;
+    }
+    if (trackName != null) {
+      _result.trackName = trackName;
+    }
+    if (eventName != null) {
+      _result.eventName = eventName;
+    }
+    return _result;
+  }
+  factory LiveRace.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LiveRace.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LiveRace clone() => LiveRace()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LiveRace copyWith(void Function(LiveRace) updates) => super.copyWith((message) => updates(message as LiveRace)) as LiveRace; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LiveRace create() => LiveRace._();
+  LiveRace createEmptyInstance() => create();
+  static $pb.PbList<LiveRace> createRepeated() => $pb.PbList<LiveRace>();
+  @$core.pragma('dart2js:noInline')
+  static LiveRace getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LiveRace>(create);
+  static LiveRace? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get raceId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set raceId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRaceId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRaceId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get trackName => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set trackName($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTrackName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTrackName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get eventName => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set eventName($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasEventName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearEventName() => clearField(3);
+}
+
+class LiveRaceListResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LiveRaceListResponse', createEmptyInstance: create)
+    ..pc<LiveRace>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'races', $pb.PbFieldType.PM, subBuilder: LiveRace.create)
+    ..hasRequiredFields = false
+  ;
+
+  LiveRaceListResponse._() : super();
+  factory LiveRaceListResponse({
+    $core.Iterable<LiveRace>? races,
+  }) {
+    final _result = create();
+    if (races != null) {
+      _result.races.addAll(races);
+    }
+    return _result;
+  }
+  factory LiveRaceListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LiveRaceListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LiveRaceListResponse clone() => LiveRaceListResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LiveRaceListResponse copyWith(void Function(LiveRaceListResponse) updates) => super.copyWith((message) => updates(message as LiveRaceListResponse)) as LiveRaceListResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LiveRaceListResponse create() => LiveRaceListResponse._();
+  LiveRaceListResponse createEmptyInstance() => create();
+  static $pb.PbList<LiveRaceListResponse> createRepeated() => $pb.PbList<LiveRaceListResponse>();
+  @$core.pragma('dart2js:noInline')
+  static LiveRaceListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LiveRaceListResponse>(create);
+  static LiveRaceListResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<LiveRace> get races => $_getList(0);
+}
+

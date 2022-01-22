@@ -46,6 +46,12 @@ class AdminServiceClient extends $grpc.Client {
           '/AdminService/disconnectRaceData',
           ($1.RaceDataConnectionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$listLiveRaces =
+      $grpc.ClientMethod<$0.Empty, $1.LiveRaceListResponse>(
+          '/AdminService/listLiveRaces',
+          ($0.Empty value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.LiveRaceListResponse.fromBuffer(value));
 
   AdminServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -84,6 +90,11 @@ class AdminServiceClient extends $grpc.Client {
       $1.RaceDataConnectionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$disconnectRaceData, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.LiveRaceListResponse> listLiveRaces($0.Empty request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$listLiveRaces, request, options: options);
   }
 }
 
@@ -136,6 +147,13 @@ abstract class AdminServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $1.RaceDataConnectionRequest.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.LiveRaceListResponse>(
+        'listLiveRaces',
+        listLiveRaces_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($1.LiveRaceListResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Empty> ping_Pre(
@@ -169,6 +187,11 @@ abstract class AdminServiceBase extends $grpc.Service {
     return disconnectRaceData(call, await request);
   }
 
+  $async.Future<$1.LiveRaceListResponse> listLiveRaces_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return listLiveRaces(call, await request);
+  }
+
   $async.Future<$0.Empty> ping($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$1.AuthResponse> auth(
       $grpc.ServiceCall call, $1.AuthRequest request);
@@ -180,4 +203,6 @@ abstract class AdminServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Empty request);
   $async.Future<$0.Empty> disconnectRaceData(
       $grpc.ServiceCall call, $1.RaceDataConnectionRequest request);
+  $async.Future<$1.LiveRaceListResponse> listLiveRaces(
+      $grpc.ServiceCall call, $0.Empty request);
 }

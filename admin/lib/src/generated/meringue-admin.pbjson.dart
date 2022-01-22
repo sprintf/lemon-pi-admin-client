@@ -108,3 +108,25 @@ const RaceDataConnectionRequest$json = const {
 
 /// Descriptor for `RaceDataConnectionRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List raceDataConnectionRequestDescriptor = $convert.base64Decode('ChlSYWNlRGF0YUNvbm5lY3Rpb25SZXF1ZXN0EhYKBmhhbmRsZRgBIAEoCVIGaGFuZGxl');
+@$core.Deprecated('Use liveRaceDescriptor instead')
+const LiveRace$json = const {
+  '1': 'LiveRace',
+  '2': const [
+    const {'1': 'raceId', '3': 1, '4': 1, '5': 9, '10': 'raceId'},
+    const {'1': 'trackName', '3': 2, '4': 1, '5': 9, '10': 'trackName'},
+    const {'1': 'eventName', '3': 3, '4': 1, '5': 9, '10': 'eventName'},
+  ],
+};
+
+/// Descriptor for `LiveRace`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List liveRaceDescriptor = $convert.base64Decode('CghMaXZlUmFjZRIWCgZyYWNlSWQYASABKAlSBnJhY2VJZBIcCgl0cmFja05hbWUYAiABKAlSCXRyYWNrTmFtZRIcCglldmVudE5hbWUYAyABKAlSCWV2ZW50TmFtZQ==');
+@$core.Deprecated('Use liveRaceListResponseDescriptor instead')
+const LiveRaceListResponse$json = const {
+  '1': 'LiveRaceListResponse',
+  '2': const [
+    const {'1': 'races', '3': 1, '4': 3, '5': 11, '6': '.LiveRace', '10': 'races'},
+  ],
+};
+
+/// Descriptor for `LiveRaceListResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List liveRaceListResponseDescriptor = $convert.base64Decode('ChRMaXZlUmFjZUxpc3RSZXNwb25zZRIfCgVyYWNlcxgBIAMoCzIJLkxpdmVSYWNlUgVyYWNlcw==');
