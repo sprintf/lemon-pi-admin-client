@@ -52,6 +52,10 @@ class AdminServiceClient extends $grpc.Client {
           ($0.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.LiveRaceListResponse.fromBuffer(value));
+  static final _$shutdown = $grpc.ClientMethod<$0.Empty, $0.Empty>(
+      '/AdminService/shutdown',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
   AdminServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -95,6 +99,11 @@ class AdminServiceClient extends $grpc.Client {
   $grpc.ResponseFuture<$1.LiveRaceListResponse> listLiveRaces($0.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listLiveRaces, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> shutdown($0.Empty request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$shutdown, request, options: options);
   }
 }
 
@@ -154,6 +163,13 @@ abstract class AdminServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($1.LiveRaceListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.Empty>(
+        'shutdown',
+        shutdown_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Empty> ping_Pre(
@@ -192,6 +208,11 @@ abstract class AdminServiceBase extends $grpc.Service {
     return listLiveRaces(call, await request);
   }
 
+  $async.Future<$0.Empty> shutdown_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return shutdown(call, await request);
+  }
+
   $async.Future<$0.Empty> ping($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$1.AuthResponse> auth(
       $grpc.ServiceCall call, $1.AuthRequest request);
@@ -205,4 +226,5 @@ abstract class AdminServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.RaceDataConnectionRequest request);
   $async.Future<$1.LiveRaceListResponse> listLiveRaces(
       $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$0.Empty> shutdown($grpc.ServiceCall call, $0.Empty request);
 }
